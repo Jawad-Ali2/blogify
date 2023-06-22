@@ -7,9 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+      screens: {
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      colors: {
+        primary: "#D0783E",
+        secondary: "#263C41",
+        helper: '38413F',
+        background: "143642",
+      },
+
     },
   },
   plugins: [],
