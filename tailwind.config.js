@@ -5,13 +5,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  mode: 'jit',
   theme: {
     extend: {
       screens: {
-        sm: '480px',
-        md: '768px',
-        lg: '976px',
-        xl: '1440px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -19,9 +21,20 @@ module.exports = {
       colors: {
         primary: "#D0783E",
         secondary: "#263C41",
-        helper: '38413F',
-        background: "143642",
+        helper: '#38413F',
+        background: "#143642",
       },
+      fontSize: {
+        h1: '80px',
+        h2: '60px',
+        h3: '50px',
+        h4: '40px',
+        h5: '30px',
+        h6: '20px',
+      },
+      backgroundImage: {
+        'hero-bg': "url('/hero-bg.png')"
+      }
 
     },
   },
