@@ -1,7 +1,21 @@
-import Link from "next/link"
+'use client';
 
+import { useState } from "react";
+
+import Link from "next/link"
+import CustomButton from "./CustomButton";
+import AuthProviders from "./AuthProviders";
+import { NavLinks } from "@/constants";
 
 const Navbar = () => {
+  const session = {};
+
+  const [open, setOpen] = useState(false);
+
+  const handleMenuPopUp = () => {
+
+  }
+
   return (
     <header>
       <nav className="flex justify-between items-center w-[92%] m-auto">
@@ -9,13 +23,31 @@ const Navbar = () => {
           <h1 className="m-5 font-bold text-[22px] cursor-pointer">Blogify</h1>
         </div>
         <div className="flex items-center gap-[4vw]">
-          <Link className="hover:text-primary" href="/">Home</Link>
-          <Link className="hover:text-primary" href="/about">About</Link>
-          <Link className="hover:text-primary" href="/contact">Pricing</Link>
-          <button className=" text-primary px-5 py-2 rounded-lg hover:outline-[#f7a36c] outline outline-1 outline-primary">
-            Get Started
-          </button>
+          {NavLinks.map((link) => (
+            <Link className="hover:text-primary xl:flex hidden" href={link.href} key={link.key}>
+              {link.text}
+            </Link>
+          ))}
+          <CustomButton
+            title="Get Started"
+            containerStyles="hover:outline-[#f7a36c] outline outline-1 outline-primary xl:flex hidden"
+            handleClick={handleMenuPopUp}
+          />
+        <div className="flexCenter gap-4">
+          {session ? (
+            <>
+              <Link href='/create-blog'>
+                Create Blog
+              </Link>
+              UserPhoto
+            </>
+          ) : (
+            <AuthProviders />
+
+          )}
         </div>
+        </div>
+
       </nav>
     </header>
   )

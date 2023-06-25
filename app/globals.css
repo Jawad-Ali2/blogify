@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ! General styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,35 +13,59 @@
   color: white;
   font-family: "Poppins", sans-serif;
 }
-html {
+body {
   background-color: #143642;
 }
 
-@layer components {
-  .hero__container {
-    @apply flex xl:flex-row flex-col relative z-0 m-[6%] 2xl:gap-[10rem] xl:gap-[6rem] sm:gap-5;
-  }
-
-  .hero__title {
-    @apply 2xl:text-[72px] sm:text-[64px] text-[55px] xl:mt-[20%] sm:mt-[8%] mt-[20%] mx-10 font-extrabold;
-  }
-
-  .hero-span__title {
-    @apply 2xl:text-[72px] sm:text-[64px] text-[55px] text-primary font-extrabold underline;
-  }
-  .hero__subtitle {
-    @apply 2xl:text-[20px] xl:text-[18px] font-normal mx-10 my-3 md:text-[16px];
-  }
-
-  .hero__image {
-    @apply flex items-center justify-center 2xl:mt-5 xl:mt-10;
-  }
-
-  .hero__button {
-    @apply bg-primary rounded-lg text-[14px] font-normal p-4 text-secondary hover:text-white hover:bg-[#ff8431] shadow-2xl mx-12 mt-5;
-  }
-
-  .hero__bg {
-    @apply xl:mb-20 xl:mt-10 absolute xl:-right-[25rem] lg:right-[0.5rem] md:-right-[6rem] sm:-right-[10rem] -right-[7.5rem] bg-hero-bg bg-repeat-round -z-10 xl:w-full lg:w-full sm:w-[900px] w-[700px] xl:h-[screen] sm:h-[screen]  h-[900px] overflow-hidden;
-  }
+.flexCenter {
+  @apply flex justify-center items-center;
 }
+
+.flexBetween {
+  @apply flex justify-between items-center;
+}
+
+.flexStart {
+  @apply flex items-center justify-start;
+}
+
+/* ! End Here */
+
+/* *Navbar */
+
+.custom-button {
+    @apply px-5 py-2 rounded-lg;
+}
+
+/* * Hero Section  */
+
+.hero__container {
+  @apply flex xl:flex-row flex-col relative z-0 m-[6%] 2xl:gap-[10rem] xl:gap-[6rem] sm:gap-5;
+}
+
+.hero__title {
+  @apply 2xl:text-[72px] sm:text-[64px] text-[55px] xl:mt-[20%] sm:mt-[8%] mt-[20%] mx-10 font-extrabold;
+}
+
+.hero-span__title {
+  @apply 2xl:text-[72px] sm:text-[64px] text-[55px] text-primary font-extrabold underline;
+}
+.hero__subtitle {
+  @apply 2xl:text-[20px] xl:text-[18px] font-normal mx-10 my-3 md:text-[16px];
+}
+
+.hero__image {
+  @apply flex items-center justify-center 2xl:mt-5 xl:mt-10;
+}
+
+.hero__button {
+  @apply bg-primary rounded-lg text-[14px] font-normal p-4 text-secondary hover:text-white hover:bg-[#ff8431] shadow-2xl mx-12 mt-5;
+}
+
+.hero__bg {
+  @apply xl:mb-20 xl:mt-10 absolute xl:-right-[25rem] lg:right-[0.5rem] md:-right-[6rem] sm:-right-[10rem] -right-[7.5rem] bg-hero-bg bg-repeat-round -z-10 xl:w-full lg:w-full sm:w-[900px] w-[700px] xl:h-[screen] sm:h-[screen]  h-[900px] overflow-hidden;
+}
+
+/* * Hero Section End */
+
+/* * Category Section  */
