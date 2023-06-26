@@ -10,7 +10,7 @@ const CustomButton = ({ title, containerStyles, handleClick }: CustomButtonProps
             className={`custom-button ${containerStyles}`}
             onClick={handleClick}
         >
-            <span className='text-primary'>
+            <span>
                 {title}
             </span>
         </button>
