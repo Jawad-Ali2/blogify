@@ -37,6 +37,7 @@ export interface UserProfile {
     email: string;
     description: string | null;
     avatarUrl: string;
+    password: string;
     post: {
         edges: { node: PostInterface }[];
         pageInfo: {

@@ -1,16 +1,17 @@
 
+
 import Link from "next/link"
-import Image from "next/image";
 import CustomButton from "./CustomButton";
 import AuthProviders from "./AuthProviders";
 import ProfileMenu from "./ProfileMenu";
 
 import { NavLinks } from "@/constants";
 import { getCurrentUser } from "@/lib/session";
-import { signOut } from "next-auth/react";
 import SmallDeviceNav from "./SmallDeviceNav";
+import Modal from "./Modal";
 
 const Navbar = async () => {
+  
   const session = await getCurrentUser();
 
 
@@ -29,29 +30,22 @@ const Navbar = async () => {
           <div className="flexCenter gap-4 z-10">
             {session?.user ? (
               <>
-                <Link href='/create-blog'>
-                  <CustomButton
-                    title="Create Blog"
-                    containerStyles='hover:outline-[#f7a36c] outline outline-1 outline-primary xl:flex hidden'
-                  />
-                </Link>
-
-                <ProfileMenu session={session} />
-
                 <CustomButton
                   type="button"
-                  title="Sign Out"
-                  containerStyles='hover:bg-[#de691b] bg-primary xl:flex hidden text-sm'
-                // handleClick={signOut}
+                  title="Create Blog"
+                  containerStyles='hover:outline-[#f7a36c] outline outline-1 outline-primary xl:flex hidden'
                 />
+
+                <ProfileMenu session={session} />
 
               </>
             ) : (
               <div className="flex">
                 <SmallDeviceNav />
-              <div className="xl:flex hidden">
-                <AuthProviders />
-              </div>
+                <div className=" xl:flex hidden">
+                  <Modal/>
+
+                </div>
               </div>
             )}
           </div>

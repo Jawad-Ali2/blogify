@@ -14,11 +14,12 @@ export const createUserMutation = `
     mutation CreateUser($input: UserCreateInput!) {
         userCreate(input: $input) {
             user{
+                id
                 name
                 email
+                password
                 avatarUrl
                 description
-                id
             }
         }
     }

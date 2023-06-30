@@ -16,6 +16,7 @@ type Provider = {
 type Providers = Record<string, Provider>;
 
 const AuthProviders = () => {
+
     const [providers, setProviders] = useState<Providers | null>(null);
 
 
@@ -33,18 +34,17 @@ const AuthProviders = () => {
         return (
             <div className='flex gap-4'>
                 {Object.values(providers).map((provider: Provider, i) => (
-                    // <button key={i} onClick={() => signIn(provider?.id)}>
-                    //     {provider.id}
-                    // </button>
                     <CustomButton
                         key={i}
                         handleClick={() => signIn(provider?.id)}
                         title="Get Started"
-                        containerStyles="hover:outline-[#f7a36c] outline outline-1 outline-primary"
+                        containerStyles="hover:outline-helper outline outline-1 outline-primary"
                     />
                 )
                 )}
+
             </div>
+
         )
     }
 }

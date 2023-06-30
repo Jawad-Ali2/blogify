@@ -7,7 +7,71 @@ import GoogleProvider from 'next-auth/providers/google';
 import jsonwebtoken from 'jsonwebtoken';
 import { JWT } from 'next-auth/jwt';
 import { SessionInterface, UserProfile } from '@/types/index';
-import { createUser, getUser } from './actions';
+import { createUser, createUserWithCred, getUser, getUserWithCred } from './actions';
+import CredentialsProvider from 'next-auth/providers/credentials';
+
+const signInProvider = CredentialsProvider({
+    credentials: {
+        email: {
+            label: 'Email',
+            type: 'email',
+        },
+        password: {
+            label: 'Password',
+            type: 'password',
+        }
+    },
+    async authorize(credentials) {
+        if (!credentials) {
+            throw new Error('Credentials not provided.');
+        }
+
+        const { email, password } = credentials;
+
+        // Retrieve the user from the database based on the email
+        const user = await getUserWithCred(email, password);
+
+        if (!user || user.password !== password) {
+            throw new Error('Invalid email or password.');
+        }
+
+        // Return the user if the password matches
+        return user as User;
+    }
+})
+
+const signUpProvider = CredentialsProvider({
+    credentials: {
+        name: { label: 'Name', type: 'text' },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+        avatarUrl: { label: 'Avatar URL', type: 'text' },
+    },
+    async authorize(credentials: Record<"name" | "email" | "password" | "avatarUrl", string> | undefined) {
+        try {
+            if (!credentials) {
+                throw new Error('Credentials not defined.');
+            }
+
+            // Check if user already exists
+            const existingUser = await getUser(credentials.email as string);
+
+            if (existingUser) {
+                throw new Error('User already exists.');
+            }
+
+            // Create a new user
+            const { name, email, password, avatarUrl } = credentials;
+            const user = await createUserWithCred(name as string, email as string, password as string, avatarUrl as string);
+
+            // Return the newly created user
+            return user
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error creating user.');
+        }
+    },
+});
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -15,6 +79,8 @@ export const authOptions: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
+        signInProvider,
+        signUpProvider,
     ],
     jwt: {
         encode: ({ secret, token }) => {
@@ -32,7 +98,7 @@ export const authOptions: NextAuthOptions = {
     },
     theme: {
         colorScheme: 'light',
-        logo: '/blogify.png',
+        logo: '/hero.png',
     },
     callbacks: {
         async session({ session }) {

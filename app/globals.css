@@ -59,7 +59,7 @@ body {
 }
 
 .hero__button {
-  @apply bg-primary rounded-lg text-[14px] font-normal p-4 text-secondary hover:text-white hover:bg-[#ff8431] shadow-2xl mx-12 mt-5;
+  @apply bg-primary text-[14px] font-normal p-4 hover:bg-helper shadow-2xl mx-12 mt-5;
 }
 
 .hero__bg {
@@ -67,5 +67,21 @@ body {
 }
 
 /* * Hero Section End */
+
+/* * Modal */
+.modal {
+  @apply fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/80;
+}
+
+/* * Sign in Form Classes */
+
+.input_group {
+  @apply flex border rounded-xl;
+}
+
+.icon{
+  @apply inline-block
+}
+
 
 /* * Category Section  */

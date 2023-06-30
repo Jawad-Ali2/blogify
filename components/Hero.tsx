@@ -1,4 +1,5 @@
 import Image from "next/image"
+import CustomButton from "./CustomButton"
 
 const Hero = () => {
   return (
@@ -8,19 +9,23 @@ const Hero = () => {
           Welcome To <span className="hero-span__title">Blogify</span>
         </h1>
         <p className="hero__subtitle ">Discover Engaging Stories, Insights, And Ideas</p>
-        <button className="hero__button ">Read Our Latest Posts</button>
+        <CustomButton
+          title="Read Our Latest Posts"
+          containerStyles="hero__button"
+        />
       </div>
 
       <div className="hero__image-container ">
         <div className="hero__image ">
           <Image
-            src="/blogify.png"
+            src='/hero1.png'
             alt="Blogify Logo"
             width={600}
             height={600}
             className='object-contain'
           />
           <div className="hero__bg " />
+          
         </div>
       </div>
     </div>

@@ -20,8 +20,9 @@ module.exports = {
       },
       colors: {
         primary: "#D0783E",
+        helper: '#de691b',
+        neutral: "#654F3C",
         secondary: "#263C41",
-        helper: '#38413F',
         background: "#143642",
       },
       fontSize: {

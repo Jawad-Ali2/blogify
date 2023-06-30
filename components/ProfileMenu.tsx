@@ -17,7 +17,7 @@ const ProfileMenu = ({ session }: { session: ProfileMenuProps }) => {
             <div className={`xl:hidden ${openModal ? 'fixed inset-0 bg-black bg-opacity-40 blur' : 'bg-opacity-0'}`} />
 
             <Menu as="div" className="relative inline-block text-left" onMouseLeave={() => setOpenModal(false)}>
-                <Menu.Button className='inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium text-white' onClick={() => setOpenModal(true)}>
+                <Menu.Button className='inline-flex w-full justify-center rounded-md px-4 py-2 text-sm text-white' onClick={() => setOpenModal(true)}>
                     {session?.user?.image && (
                         <Image
                             src={session.user.image}
@@ -32,8 +32,14 @@ const ProfileMenu = ({ session }: { session: ProfileMenuProps }) => {
                         alt="more"
                         height={20}
                         width={20}
-                        className="mt-4 ml-2 xl:hidden"
+                        className="mt-4 ml-2"
                     />
+                    {/* <CustomButton
+                        type="button"
+                        title="Sign Out"
+                        containerStyles='hover:bg-[#de691b] bg-primary xl:flex hidden text-sm m-auto ml-6'
+                        handleClick={() => signOut()}
+                    /> */}
                 </Menu.Button>
 
                 <Transition
@@ -46,7 +52,7 @@ const ProfileMenu = ({ session }: { session: ProfileMenuProps }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 w-56 origin-top-right rounded-md bg-gradient-to-r from-transparent from-20% to-background shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none xl:hidden ">
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right rounded-md bg-gradient-to-r from-transparent from-20% to-background shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none ">
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {session?.user?.image && (
@@ -64,42 +70,52 @@ const ProfileMenu = ({ session }: { session: ProfileMenuProps }) => {
                             <Menu.Item>
                                 {({ active }) => (
 
-                                    <Link href='/home' className={`${active ? 'bg-primary text-helper' : 'text-white'
+                                    <Link href='/user-profile' className={`${active ? 'bg-primary text-neutral' : 'text-white'
                                         } flex justify-center mt-2 w-full items-center rounded-md px-2 py-2 text-sm`}>
+                                        Profile
+                                    </Link>
+                                )}
+                            </Menu.Item>
+                            <hr className="h-px my-1 bg-gray-700 border-0" />
+                            <Menu.Item>
+                                {({ active }) => (
+
+                                    <Link href='/home' className={`${active ? 'bg-primary text-neutral' : 'text-white'
+                                        } flex justify-center mt-2 w-full items-center rounded-md px-2 py-2 text-sm xl:hidden`}>
                                         Home
                                     </Link>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href='/about' className={`${active ? 'bg-primary text-helper' : 'text-white'
-                                        } flex justify-center w-full rounded-md px-2 py-2 text-sm`}>
+                                    <Link href='/about' className={`${active ? 'bg-primary text-neutral' : 'text-white'
+                                        } flex justify-center w-full rounded-md px-2 py-2 text-sm xl:hidden`}>
                                         About
                                     </Link>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href='/pricing' className={`${active ? 'bg-primary text-helper' : 'text-white'
-                                        } flex justify-center w-full rounded-md px-2 py-2 text-sm`}>
+                                    <Link href='/pricing' className={`${active ? 'bg-primary text-neutral' : 'text-white'
+                                        } flex justify-center w-full rounded-md px-2 py-2 text-sm xl:hidden`}>
                                         Pricing
                                     </Link>
                                 )}
                             </Menu.Item>
-                            <hr className="h-px my-1 bg-gray-700 border-0" />
+                            <hr className="h-px my-1 bg-gray-700 border-0 xl:hidden" />
                         </div>
                         <div className="px-2 py-2 flex flex-col">
                             <Link href='/create-blog'>
                                 <CustomButton
                                     title="Create Blog"
-                                    containerStyles='hover:outline-[#f7a36c] outline outline-1 text-sm outline-primary flexCenter m-auto px-10'
+                                    containerStyles='hover:outline-helper outline outline-1 text-sm outline-primary flexCenter m-auto px-10 xl:hidden'
                                 />
                             </Link>
 
                             <Menu.Item>
                                 <CustomButton
                                     title="Sign out"
-                                    containerStyles='hover:bg-[#de691b] bg-primary text-sm mt-5 flex-auto shadow-2xl'
+                                    containerStyles='hover:bg-helper bg-primary text-sm mt-5 flex-auto shadow-2xl xl:mt-1'
                                     handleClick={() => signOut()}
                                 />
                             </Menu.Item>

@@ -5,9 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { Fragment, useState } from 'react';
 import AuthProviders from './AuthProviders';
+import SignInModal from './SignInForm';
+import CustomButton from './CustomButton';
+import Modal from './Modal';
 
 const SmallDeviceNav = () => {
     const [openModal, setOpenModal] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="flex-col relative" >
@@ -42,7 +46,7 @@ const SmallDeviceNav = () => {
 
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href='/home' className={`${active ? 'bg-primary text-helper' : 'text-white'
+                                    <Link href='/home' className={`${active ? 'bg-primary text-neutral' : 'text-white'
                                         } flex justify-center mt-2 w-full items-center rounded-md px-2 py-2 text-sm`}>
                                         Home
                                     </Link>
@@ -50,7 +54,7 @@ const SmallDeviceNav = () => {
                             </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href='/about' className={`${active ? 'bg-primary text-helper' : 'text-white'
+                                    <Link href='/about' className={`${active ? 'bg-primary text-neutral' : 'text-white'
                                         } flex justify-center w-full rounded-md px-2 py-2 text-sm`}>
                                         About
                                     </Link>
@@ -58,7 +62,7 @@ const SmallDeviceNav = () => {
                             </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link href='/pricing' className={`${active ? 'bg-primary text-helper' : 'text-white'
+                                    <Link href='/pricing' className={`${active ? 'bg-primary text-neutral' : 'text-white'
                                         } flex justify-center w-full rounded-md px-2 py-2 text-sm`}>
                                         Pricing
                                     </Link>
@@ -68,7 +72,19 @@ const SmallDeviceNav = () => {
                         </div>
                         <div className="px-1 py-1 flexCenter">
                             <Menu.Item>
-                                <AuthProviders />
+                                <div>
+                                    {/* <Link href='/auth/signin'> */}
+                                    {/* <CustomButton
+                                            type='button'
+                                            handleClick={() => setIsOpen(true)}
+                                            title="Get Started"
+                                            containerStyles="hover:outline-helper outline outline-1 outline-primary"
+                                        /> */}
+                                    {/* </Link> */}
+                                        <Modal />
+                                    {/* <SignInModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
+                                </div>
+                                {/* <AuthProviders /> */}
                             </Menu.Item>
                         </div>
 
