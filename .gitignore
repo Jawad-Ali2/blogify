@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .env
-grafbase/.env
+/grafbase/.env
 
 # testing
 /coverage
